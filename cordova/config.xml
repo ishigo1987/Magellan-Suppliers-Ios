@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.app.magellan.partners" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" version="0.1.1" android-versionCode="101">
+  <name>Magellan Partners</name>
+  <description>
+    Magellan Partners Android mobile application
+  </description>
+  <author email="stephnguets@yahoo.fr">
+    Stephane Nguetseng
+  </author>
+   <preference name="Orientation" value="portrait" />
+   <preference name="KeepRunning" value="true"/>
+   <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,assets,root" />
+   <preference name="iosExtraFilesystems" value="library,library-nosync,documents,documents-nosync,cache,bundle,root" />
+   <preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
+   <param name="onload" value="true"/>
+
+   <plugin name="cordova-plugin-android-softinputmode" spec="https://github.com/ishigo1987/cordova-plugin-android-softinputmode.git" />
+   <plugin name="cordova-plugin-proguard" spec="https://github.com/greybax/cordova-plugin-proguard.git" />
+   <plugin name="cordova-plugin-x-toast" spec="2.7.3" />
+   <plugin name="cordova-plugin-screen-orientation" spec="3.0.2" />
+   <!-- <plugin name="cordova-plugin-file-transfer" spec="https://github.com/ishigo1987/cordova-plugin-file-transfer.git" /> -->
+   <!-- <plugin name="cordova-plugin-file-7.0.0-for-Late" spec="https://github.com/ishigo1987/cordova-plugin-file-7.0.0-for-Late.git" /> -->
+   <plugin name="tabris-plugin-firebase" spec="https://github.com/eclipsesource/tabris-plugin-firebase.git" />
+   <plugin name="wm-filepicker-plugin" spec="https://github.com/ishigo1987/wm-filepicker-plugin.git" />
+   <plugin name= "Cordova-tabris-crop-plugin" spec="https://github.com/ishigo1987/Cordova-tabris-crop-plugin.git" />
+
+   <platform name="android">
+
+      <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/screen/splashscreen.png" />
+    
+      <preference name="android-minSdkVersion" value="26" />
+      
+      <preference name="android-compileSdkVersion" value="33" />
+      
+      <preference name="android-build-tool" value="33" />
+      
+      <preference name="android-targetSdkVersion" value="33" />
+      
+      <!-- This hack is for Android 9 and up for authorizing the app to go to internet -->
+      <!-- We need to put it to false in production but i think that in production mode $IS_DEBUG === false -->
+      <!-- Problem during the development phase with the tabris audio plugin, i put it in comment for now -->
+      <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+
+        <application android:usesCleartextTraffic="$IS_DEBUG" />
+        
+        <application android:largeHeap="true" />
+        
+      </edit-config>
+      
+      
+      
+      <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest">
+        
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        
+      </config-file>
+      
+      <!-- Changes mades only on TabrisJS 3.0+ -->
+      
+      <resource-file src="res/android/values/magellan_theme.xml" target="app/src/main/res/values/magellan_theme.xml" />
+      
+      <preference name="Theme" value="@style/Theme.Magellan" />
+
+      <preference name="AndroidPersistentFileLocation" value="Internal" />
+      
+      <icon src="res/android/mdpi.png" density="mdpi" />
+      
+      <icon src="res/android/hdpi.png" density="hdpi" />
+      
+      <icon src="res/android/xhdpi.png" density="xhdpi" />
+      
+      <icon src="res/android/xxhdpi.png" density="xxhdpi" />
+      
+      <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
+
+      <resource-file src="res/android/values/magellan_theme.xml" target="app/src/main/res/values/magellan_theme.xml" />
+
+      <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.Magellan" />
+
+  </platform>
+
+</widget>

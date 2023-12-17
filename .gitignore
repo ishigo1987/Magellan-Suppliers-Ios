@@ -1,0 +1,5 @@
+/dist/
+/build/
+node_modules/
+cordova/build.json
+cordova/magellan.jks

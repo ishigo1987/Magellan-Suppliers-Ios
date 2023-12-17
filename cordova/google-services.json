@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "291737655509",
+    "project_id": "magellan-transit-5ad2c",
+    "storage_bucket": "magellan-transit-5ad2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291737655509:android:3b29145b6f6b04c274aa5c",
+        "android_client_info": {
+          "package_name": "com.app.magellan.partners"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgRjKVBD1qa7eSZmjKWPg2HeJbJNmfZTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
