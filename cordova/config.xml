@@ -1,21 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.app.magellan.partners" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" version="0.1.1" android-versionCode="101">
+<widget id="com.app.magellan.partners" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns="http://www.w3.org/ns/widgets" version="0.1.1">
   <name>Magellan Partners</name>
   <description>
-    Magellan Partners Android mobile application
+    Magellan Partners Ios mobile application
   </description>
   <author email="stephnguets@yahoo.fr">
     Stephane Nguetseng
   </author>
    <preference name="Orientation" value="portrait" />
    <preference name="KeepRunning" value="true"/>
-   <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,assets,root" />
    <preference name="iosExtraFilesystems" value="library,library-nosync,documents,documents-nosync,cache,bundle,root" />
    <preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
-   <param name="onload" value="true"/>
 
-   <plugin name="cordova-plugin-android-softinputmode" spec="https://github.com/ishigo1987/cordova-plugin-android-softinputmode.git" />
-   <plugin name="cordova-plugin-proguard" spec="https://github.com/greybax/cordova-plugin-proguard.git" />
+   <param name="onload" value="true"/>
    <plugin name="cordova-plugin-x-toast" spec="2.7.3" />
    <plugin name="cordova-plugin-screen-orientation" spec="3.0.2" />
    <!-- <plugin name="cordova-plugin-file-transfer" spec="https://github.com/ishigo1987/cordova-plugin-file-transfer.git" /> -->
@@ -24,63 +21,61 @@
    <plugin name="wm-filepicker-plugin" spec="https://github.com/ishigo1987/wm-filepicker-plugin.git" />
    <plugin name= "Cordova-tabris-crop-plugin" spec="https://github.com/ishigo1987/Cordova-tabris-crop-plugin.git" />
 
-   <platform name="android">
+   <platform name="ios">
+      
+       <preference name="deployment-target" value="14.0" />
 
-      <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/screen/splashscreen.png" />
-    
-      <preference name="android-minSdkVersion" value="26" />
-      
-      <preference name="android-compileSdkVersion" value="33" />
-      
-      <preference name="android-build-tool" value="33" />
-      
-      <preference name="android-targetSdkVersion" value="33" />
-      
-      <!-- This hack is for Android 9 and up for authorizing the app to go to internet -->
-      <!-- We need to put it to false in production but i think that in production mode $IS_DEBUG === false -->
-      <!-- Problem during the development phase with the tabris audio plugin, i put it in comment for now -->
-      <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+       <resource-file src="GoogleService-Info.plist" />
 
-        <application android:usesCleartextTraffic="$IS_DEBUG" />
-        
-        <application android:largeHeap="true" />
-        
+       <preference name="SwiftVersion" value="5.0"/>
+
+      <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+          <string>Permission pour accéder la galerie pour sauvegarder des photos.</string>
       </edit-config>
-      
-      
-      
-      <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest">
-        
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        
-        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-        
-      </config-file>
-      
-      <!-- Changes mades only on TabrisJS 3.0+ -->
-      
-      <resource-file src="res/android/values/magellan_theme.xml" target="app/src/main/res/values/magellan_theme.xml" />
-      
-      <preference name="Theme" value="@style/Theme.Magellan" />
 
-      <preference name="AndroidPersistentFileLocation" value="Internal" />
-      
-      <icon src="res/android/mdpi.png" density="mdpi" />
-      
-      <icon src="res/android/hdpi.png" density="hdpi" />
-      
-      <icon src="res/android/xhdpi.png" density="xhdpi" />
-      
-      <icon src="res/android/xxhdpi.png" density="xxhdpi" />
-      
-      <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
+      <config-file platform="ios" parent="NSCameraUsageDescription" target="*-Info.plist">
+            <string>Permission pour utiliser l'appareil photo pour capturer des photos.</string>
+        </config-file>
 
-      <resource-file src="res/android/values/magellan_theme.xml" target="app/src/main/res/values/magellan_theme.xml" />
+      <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+          <string>Permission pour accéder a la galerie pour récupérer des photos.</string>
+      </edit-config>
 
-      <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.Magellan" />
+        <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="res/ios/icon-20@3x.png" width="60" height="60" />
+        <icon src="res/ios/icon-60@2x.png" width="120" height="120" />
+        <!-- iPad -->
+        <icon src="res/ios/icon-76.png" width="76" height="76" />
+        <icon src="res/ios/icon-76@2x.png" width="152" height="152" />
+        <!-- Spotlight Icon -->
+        <icon src="res/ios/icon-40.png" width="40" height="40" />
+        <icon src="res/ios/icon-40@2x.png" width="80" height="80" />
+        <!-- iOS 6.1 -->
+        <!-- iPhone / iPod Touch -->
+        <icon src="res/ios/icon-20@3x.png" width="60" height="60" />
+        <icon src="res/ios/icon@2x.png" width="120" height="120" />
+        <!-- iPad -->
+        <!-- <icon src="res/ios/icon-72.png" width="72" height="72" />
+        <icon src="res/ios/icon-72@2x.png" width="144" height="144" /> -->
+        <!-- iPad Pro -->
+        <!-- <icon src="res/ios/icon-167.png" width="167" height="167" /> -->
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="res/ios/icon-29.png" width="29" height="29" />
+        <icon src="res/ios/icon-29@2x.png" width="58" height="58" />
+        <icon src="res/ios/icon-29@3x.png" width="87" height="87" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <!-- <icon src="res/ios/icon-50.png" width="50" height="50" />
+        <icon src="res/ios/icon-50@2x.png" width="100" height="100" /> -->
+        <!-- iTunes Marketing Image -->
+        <icon src="res/ios/icon~ios-marketing.png" width="1024" height="1024" />
 
+        <!-- Configurations d'écran de démarrage spécifiques à iOS -->
+        <splash src="res/ios/screen/splashscreen.png" />
+      
   </platform>
 
 </widget>
